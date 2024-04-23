@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80c2245c-aaf7-48d2-ae40-cd7046d0a60b">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     t_film.`judul_film` AS t_film_judul_film,
+     t_film.`jadwal_tayang` AS t_film_jadwal_tayang,
+     t_pemesanan.`kode_hari` AS t_pemesanan_kode_hari,
+     t_pemesanan.`tgl_pesan` AS t_pemesanan_tgl_pesan,
+     t_pemesanan.`jam_mulai` AS t_pemesanan_jam_mulai,
+     t_pemesanan.`harga` AS t_pemesanan_harga,
+     t_tiket.`nomor_bangku` AS t_tiket_nomor_bangku
+FROM
+     `t_tiket` t_tiket INNER JOIN `t_film` t_film ON t_tiket.`id_film` = t_film.`id_film`
+     INNER JOIN `t_pemesanan` t_pemesanan ON t_tiket.`id_tiket` = t_pemesanan.`id_tiket`]]>
+	</queryString>
+	<field name="t_film_judul_film" class="java.lang.String"/>
+	<field name="t_film_jadwal_tayang" class="java.sql.Date"/>
+	<field name="t_pemesanan_kode_hari" class="java.lang.String"/>
+	<field name="t_pemesanan_tgl_pesan" class="java.sql.Date"/>
+	<field name="t_pemesanan_jam_mulai" class="java.lang.String"/>
+	<field name="t_pemesanan_harga" class="java.lang.Integer"/>
+	<field name="t_tiket_nomor_bangku" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="d06b6856-3c73-4b92-8626-b0d55ac8c3f2"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="3546bed0-3746-4a5c-94fe-e9a34ecb5b4c"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="8da13c1b-3392-44a7-9052-f390baf01dc1"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="337fbf0a-3e7c-4a77-9da6-c9da7d943fbf"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="ad91fb4d-a03f-4551-a7d1-9c5f51817e6e"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="acc7807c-c070-4790-ac03-848d4d710b48"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="114" height="15" forecolor="#736343" uuid="58c5325e-1644-4f29-98b6-b2372a4ca204"/>
+				<text><![CDATA[t_film_judul_film]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="114" y="0" width="114" height="15" forecolor="#736343" uuid="838a1ada-1db0-4c6a-9f82-85f347779ee3"/>
+				<text><![CDATA[t_film_jadwal_tayang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="228" y="0" width="114" height="15" forecolor="#736343" uuid="fcf130e6-05f5-4c60-b906-9b20f7ba7041"/>
+				<text><![CDATA[t_pemesanan_kode_hari]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="342" y="0" width="114" height="15" forecolor="#736343" uuid="423dedd1-9925-4085-83f9-7a6565cd701e"/>
+				<text><![CDATA[t_pemesanan_tgl_pesan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="0" width="114" height="15" forecolor="#736343" uuid="8cfec224-a4cb-4a23-b02b-69959a06dd30"/>
+				<text><![CDATA[t_pemesanan_jam_mulai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="570" y="0" width="114" height="15" forecolor="#736343" uuid="0c94d061-689f-41e8-8c6a-7d7f06669c27"/>
+				<text><![CDATA[t_pemesanan_harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="684" y="0" width="114" height="15" forecolor="#736343" uuid="61a83b8d-ba17-4a27-93f3-44eb9a35214c"/>
+				<text><![CDATA[t_tiket_nomor_bangku]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="a3411df0-cd7d-4a5c-9ec8-74822b75152b"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="114" height="15" uuid="6438c93a-522a-4648-bd18-8f66e2020e2d"/>
+					<textFieldExpression><![CDATA[$F{t_film_judul_film}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="114" y="0" width="114" height="15" uuid="06c26687-8e6d-42e2-b8f9-71f6011261f1"/>
+					<textFieldExpression><![CDATA[$F{t_film_jadwal_tayang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="228" y="0" width="114" height="15" uuid="e08321a5-b887-4ba2-89b1-ea1e740f7395"/>
+					<textFieldExpression><![CDATA[$F{t_pemesanan_kode_hari}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="342" y="0" width="114" height="15" uuid="e1b5b757-5238-4b39-a82f-fb450498f8b6"/>
+					<textFieldExpression><![CDATA[$F{t_pemesanan_tgl_pesan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="456" y="0" width="114" height="15" uuid="eca5261f-8a9e-4566-9b23-feb7ab57cb16"/>
+					<textFieldExpression><![CDATA[$F{t_pemesanan_jam_mulai}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="570" y="0" width="114" height="15" uuid="0cb5d7fc-53bc-4319-be99-ad798b24fd6c"/>
+					<textFieldExpression><![CDATA[$F{t_pemesanan_harga}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="684" y="0" width="114" height="15" uuid="ce613f7b-48a7-4c32-addb-ff96554ce01b"/>
+					<textFieldExpression><![CDATA[$F{t_tiket_nomor_bangku}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="b20e490e-b98c-4ea4-98d6-288d0b6e628c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="68e6a48c-62d6-4a73-820c-5b87a999b080"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="26738848-3778-4887-badc-40bcd95ef50b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="9f0c3dcc-63a1-4889-96d6-a850367a6ce1"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="0f269ee9-d207-4364-a85c-68bcfa54486a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
